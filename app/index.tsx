@@ -1,1 +1,1 @@
-import { View, } from 'react-native'
+import { createTamagui,TamaguiProvider, View } from 'tamagui'
