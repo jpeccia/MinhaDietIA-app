@@ -24,7 +24,7 @@ export default function index({name, control, placeholder, rules, error, keyboar
             onBlur={onBlur}
             value={value}
             onChangeText={onChange}
-            keyboardType='default'
+            keyboardType={keyboardType}
         />
         )}
         />
