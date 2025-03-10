@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, TextInput, KeyboardTypeOptions } from 'react-native'
 import React from 'react'
 import { Controller } from 'react-hook-form'
+import { colors } from '@/constants/colors';
 
 interface InputProps{
     name: string;
@@ -20,6 +21,7 @@ export default function index({name, control, placeholder, rules, error, keyboar
         rules={rules}
         render={({ field: { onChange, onBlur, value }}) => (
             <TextInput 
+            style={styles.input}
             placeholder={placeholder}
             onBlur={onBlur}
             value={value}
@@ -28,6 +30,7 @@ export default function index({name, control, placeholder, rules, error, keyboar
         />
         )}
         />
+        {error && <Text style={styles.errorText}>{error}</Text>}
     </View>
   )
 }
@@ -35,5 +38,15 @@ export default function index({name, control, placeholder, rules, error, keyboar
 const styles = StyleSheet.create({
     container:{
         marginBottom: 16
+    },
+    input:{
+        height: 44,
+        backgroundColor: colors.white,
+        paddingHorizontal: 10,
+        borderRadius: 4
+    },
+    errorText:{
+        color: 'red',
+        marginTop: 4
     }
 })
