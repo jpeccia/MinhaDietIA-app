@@ -1,5 +1,6 @@
 import { colors } from "../constants/colors"
 import { Pressable, StyleSheet, View, Image, Text} from 'react-native'
+import { Link } from "expo-router"
 
 export default function Index(){
   return (
@@ -15,9 +16,11 @@ export default function Index(){
           A dieta criada do seu jeito com inteligência artificial!
         </Text>
 
-        <Pressable style={styles.button}>
+      <Link href="/step" asChild>
+      <Pressable style={styles.button}>
           <Text style={styles.buttonText}>Criar minha dieta</Text>
         </Pressable>
+      </Link>
       </View>
   )
 }
