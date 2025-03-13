@@ -1,11 +1,11 @@
-import { View, Text, StyleSheet, Pressable, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, Pressable, ScrollView, Share } from 'react-native'
 import React from 'react'
 import { useDataStore } from '@/store/data'
 import { useQuery } from '@tanstack/react-query'
 import { api } from '@/services/api'
 import { colors } from '@/constants/colors'
 import { Data } from '@/types/data'
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
 import { Feather, Ionicons } from '@expo/vector-icons'
 
 interface ResponseData {
@@ -22,7 +22,19 @@ export default function Nutrition() {
                 if(!user){
                     throw new Error("Failed to load nutrition")
                 }
-            const response = await api.get<ResponseData>("/teste")
+            const response = await api.post<ResponseData>("/api/dieta",{
+                name: user.name,
+                age: user.age,
+                gender: user.gender,
+                height: user.height,
+                weight: user.weight,
+                objective: user.objective,
+                level: user.level,
+                foodPreference: user.foodPreference,
+                numberMeals: user.numberMeals,
+                foodRestrictions: user.foodRestrictions,
+                useSuplementation: user.useSuplementation
+            })
 
             return response.data.data
             } catch (err) {
@@ -30,6 +42,62 @@ export default function Nutrition() {
             }
         }
     })
+    async function handleShare() {
+        try {
+            if (!data || Object.keys(data).length === 0) return;
+    
+            // Informações básicas
+            const nome = data.nome || "Atleta Desconhecido";
+            const objetivo = data.objetivo || "Virar um mito fitness";
+            const calorias = data.calorias ? `${data.calorias} kcal` : "o máximo possível! 💪";
+            const idade = data.idade ? `${data.idade} anos` : "uma idade lendária";
+            const altura = data.altura ? `${data.altura}m` : "altura secreta";
+            const peso = data.peso ? `${data.peso}kg` : "um peso misterioso";
+            const sexo = data.sexo ? (data.sexo.toLowerCase() === "masculino" ? "👨" : "👩") : "🤖";
+    
+            // Suplementos
+            const supplements = Array.isArray(data.suplementos) && data.suplementos.length > 0
+                ? data.suplementos.join(", ")
+                : "Nenhum suplemento recomendado. Você é naturalmente OP! 💪🔥";
+    
+            // Refeições
+            const foods = Array.isArray(data.refeicoes) && data.refeicoes.length > 0
+                ? data.refeicoes.map(item => {
+                      const alimentos = Array.isArray(item.alimentos) && item.alimentos.length > 0
+                          ? item.alimentos.join(", ")
+                          : "Nada listado. Talvez um arroz com ovo? 🍚🥚";
+    
+                      return `🍽️ *${item.nome}* - ⏰ ${item.horario}\n🥗 *Alimentos:* ${alimentos}`;
+                  }).join("\n\n")
+                : "Nenhuma refeição cadastrada. Hora de devorar tudo que encontrar? 🍕🍔";
+    
+            // Mensagem final divertida
+            const message = `📋 *Plano de Dieta Personalizado* 🎯
+            
+    🏋️ *Nome:* ${nome} ${sexo}
+    🎯 *Objetivo:* ${objetivo}
+    🔥 *Calorias diárias:* ${calorias}
+    🎂 *Idade:* ${idade}
+    📏 *Altura:* ${altura}
+    ⚖️ *Peso:* ${peso}
+    
+    🍛 *Plano Alimentar:*
+    ${foods}
+    
+    💊 *Dicas de Suplementação:*
+    ${supplements}
+    
+    🚀 Agora é só seguir firme! Nada de furar a dieta... ou eu vou ficar de olho! 👀😂`;
+    
+            await Share.share({
+                message: message
+            });
+    
+        } catch (err) {
+            console.log("Erro ao compartilhar:", err);
+        }
+    }
+    
 
     if(isFetching){
         return(
@@ -51,68 +119,74 @@ export default function Nutrition() {
         )
     }
 
-  return (
-    <View style={styles.container}>
-        <View style={styles.containerHeader}>
-            <View style={styles.contentHeader}>
-                <Text style={styles.title}>Minha dieta</Text>
-                 <Pressable style={styles.buttonShare}>
-                    <Text style={styles.buttonShareText}>Compartilhar</Text>
-                 </Pressable>
+    return (
+        <View style={styles.container}>
+            <View style={styles.containerHeader}>
+                <View style={styles.contentHeader}>
+                    <Text style={styles.title}>Minha dieta</Text>
+                    <Pressable style={styles.buttonShare} onPress={handleShare}>
+                        <Text style={styles.buttonShareText}>Compartilhar</Text>
+                    </Pressable>
+                </View>
             </View>
-        </View>
-        <ScrollView style={{ paddingLeft: 16, paddingRight: 16, flex:1 }}>
-                {data && Object.keys(data).length > 0 && (
+            
+            <ScrollView style={{ paddingLeft: 16, paddingRight: 16, flex: 1 }}>
+                {data && Object.keys(data).length > 0 ? (
                     <>
                         <Text style={styles.name}>Eai {data.nome}!</Text>
                         <Text style={styles.objective}>Segue sua dieta com foco em: {data.objetivo}</Text>
-                        <Text style={styles.objective}>Fiz o calculo aqui, e você precisa consumir {data.calorias} calorias!</Text>
-
+                        <Text style={styles.objective}>Fiz o cálculo aqui, e você precisa consumir {data.calorias} calorias!</Text>
+    
                         <Text style={styles.label}>Refeições:</Text>
-                        <ScrollView>
-                            <View style={styles.foods}>
-                                {data.refeicoes.map( (refeicao) => (
-                                    <View key={refeicao.nome}style={styles.food}>
+                        <View style={styles.foods}>
+                            {Array.isArray(data.refeicoes) &&
+                                data.refeicoes.map((refeicao) => (
+                                    <View key={refeicao.nome} style={styles.food}>
                                         <View style={styles.foodHeader}>
                                             <Text style={styles.foodName}>{refeicao.nome}</Text>
                                             <Ionicons name="restaurant" size={16} color="#000" />
                                         </View>
-
+    
                                         <View style={styles.foodContent}>
                                             <Feather name="clock" size={14} color="#000" />
                                             <Text>Horário: {refeicao.horario}</Text>
                                         </View>
-
+    
                                         <Text style={styles.foodText}>Alimentos:</Text>
-                                        {refeicao.alimentos.map(alimento => (
-                                            <Text key={alimento}>{alimento}</Text>
-                                        ))}
+                                        {Array.isArray(refeicao.alimentos) &&
+                                            refeicao.alimentos.map((alimento, index) => (
+                                                <Text key={`${alimento}-${index}`}>{alimento}</Text>
+                                            ))}
                                     </View>
                                 ))}
-                            </View>
-
-                            <View style={styles.suplemments}>
-                                <Text style={styles.foodName}>Dica de suplementos:</Text>
-                                {data.suplementos.map( item => (
-                                    <Text key={item}>{item}</Text>
+                        </View>
+    
+                        <View style={styles.suplemments}>
+                            <Text style={styles.foodName}>Dica de suplementos:</Text>
+                            {Array.isArray(data.suplementos) &&
+                                data.suplementos.map((item, index) => (
+                                    <Text key={`${item}-${index}`}>{item}</Text>
                                 ))}
-                            </View>
-
-                            <Pressable style={styles.button}>
-                                <Text style={styles.buttonText}>Gerar nova dieta</Text>
-                            </Pressable>
-                        </ScrollView>
+                        </View>
+    
+                        <Pressable style={styles.button} onPress={() => router.replace("/")}>
+                            <Text style={styles.buttonText}>Gerar nova dieta</Text>
+                        </Pressable>
                     </>
+                ) : (
+                    <Text>Carregando...</Text>
                 )}
             </ScrollView>
-    </View>
-  )
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({
     loading:{
         flex:1,
-        backgroundColor: colors.background
+        backgroundColor: colors.background,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     loadingText:{
         fontSize:18,
@@ -215,6 +289,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 4,
+        marginBottom: 24
     },
     buttonText:{
         color: colors.white,
