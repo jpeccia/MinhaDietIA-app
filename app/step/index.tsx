@@ -38,24 +38,49 @@ export default function Step(){
         router.push('/create')
     }
 
-    return(
+    return (
         <View style={styles.container}>
-            <Header step={"Passo 1"} title={"Vamos começar"}/>
+            <Header step={"Passo 1"} title={"🎯 Vamos começar!"} />
+    
             <ScrollView style={styles.content}>
-                <Text style={styles.label}>Nome:</Text>
-                <Input name="name" control={control} placeholder="Digite seu nome..." error={errors.name?.message} keyboardType="default" />
-
-                <Text style={styles.label}>Idade:</Text>
-                <Input name="age" control={control} placeholder="Ex: 22" error={errors.age?.message} keyboardType="numeric" />
-
-                <Text style={styles.label}>Sua altura atual:</Text>
-                <Input name="height" control={control} placeholder="Ex: 1.80" error={errors.height?.message} keyboardType="numeric" />
-
-                <Text style={styles.label}>Seu peso atual:</Text>
-                <Input name="weight" control={control} placeholder="Ex: 80" error={errors.weight?.message} keyboardType="numeric" />
-
+                <Text style={styles.label}>👤 Nome:</Text>
+                <Input
+                    name="name"
+                    control={control}
+                    placeholder="Como você quer ser chamado? 🤔"
+                    error={errors.name?.message}
+                    keyboardType="default"
+                />
+    
+                <Text style={styles.label}>🎂 Idade:</Text>
+                <Input
+                    name="age"
+                    control={control}
+                    placeholder="Quantos anos você tem? 🧐"
+                    error={errors.age?.message}
+                    keyboardType="numeric"
+                />
+    
+                <Text style={styles.label}>📏 Sua altura atual:</Text>
+                <Input
+                    name="height"
+                    control={control}
+                    placeholder="Ex: 1.80m ⬆️"
+                    error={errors.height?.message}
+                    keyboardType="numeric"
+                />
+    
+                <Text style={styles.label}>⚖️ Seu peso atual:</Text>
+                <Input
+                    name="weight"
+                    control={control}
+                    placeholder="Ex: 80kg 🏋️"
+                    error={errors.weight?.message}
+                    keyboardType="numeric"
+                />
+    
                 <Pressable style={styles.button} onPress={handleSubmit(handleCreate)}>
-                    <Text style={styles.buttonText}>Avançar</Text>
+                    <Text style={styles.buttonText}>🚀 Avançar</Text>
                 </Pressable>
             </ScrollView>
         </View>
