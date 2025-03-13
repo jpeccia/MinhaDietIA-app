@@ -30,7 +30,7 @@ export default function index() {
 
   return (
         <View style={styles.container}>
-            <Header step={"Passo 2"} title={"Finalizando dieta"}/>
+            <Header step={"Passo 2"} title={"Quase lá!"}/>
 
             <ScrollView style={styles.content}>
                 <Text style={styles.label}>Sexo:</Text>
