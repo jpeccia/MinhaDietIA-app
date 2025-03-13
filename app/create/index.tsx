@@ -1,13 +1,14 @@
 import { Pressable, StyleSheet, View, Text, ScrollView} from 'react-native'
 import React from 'react'
 import { Header } from "@/components/header"
-import Input from "@/components/input"
 
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { colors } from '@/constants/colors'
 import Select from '@/components/input/select'
+import { useDataStore } from '@/store/data'
+import { router } from 'expo-router'
 
 const schema = z.object({
     gender: z.string().min(1, { message: 'O sexo é obrigatório'}),
@@ -16,12 +17,27 @@ const schema = z.object({
     foodPreference: z.string().min(1, { message: 'Selecione sua preferencia alimentar'}),
 })
 
+type FormData = z.infer<typeof schema>
+
 export default function index() {
 
     const { control, handleSubmit, formState: { errors, isValid }} = 
     useForm({
         resolver: zodResolver(schema)
     })
+
+        const setPageTwo = useDataStore(state => state.setPageTwo)
+    
+        function handleCreate(data: FormData) {
+            setPageTwo({
+                gender: data.gender,
+                objective: data.objective,
+                level: data.level,
+                foodPreference: data.foodPreference
+            })
+    
+            router.push('/finish')
+        }
 
     const genderOptions = [
         { label: "Masculino", value: "masculino"},
@@ -98,6 +114,10 @@ export default function index() {
                   error={errors.foodPreference?.message} 
                   options={foodOptions}                
                   />
+
+                <Pressable style={styles.button} onPress={handleSubmit(handleCreate)}>
+                         <Text style={styles.buttonText}>Avançar</Text>
+                </Pressable>
             </ScrollView>
         </View>
   )
@@ -117,5 +137,17 @@ const styles = StyleSheet.create({
         color: colors.white,
         fontWeight: 'bold',
         marginBottom: 8
+    },
+    button:{
+        backgroundColor: colors.blue,
+        height: 44,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 4,
+    },
+    buttonText:{
+        color: colors.white,
+        fontSize: 16,
+        fontWeight: 'bold'
     }
 })
