@@ -34,6 +34,8 @@ export default function index() {
                 numberMeals: data.numberMeals,
                 useSuplementation: data.useSuplementation,
             })
+
+            router.push('/nutrition')
         }
 
     const foodRestrictionOptions = [
@@ -54,7 +56,7 @@ export default function index() {
 
   return (
         <View style={styles.container}>
-            <Header step={"Passo 2"} title={"Quase lá!"}/>
+            <Header step={"Passo 3"} title={"Finalizando"}/>
 
             <ScrollView style={styles.content}>
                 <Text style={styles.label}>Selecione sua restrição alimentar:</Text>
