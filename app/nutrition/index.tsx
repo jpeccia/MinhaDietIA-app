@@ -99,45 +99,52 @@ export default function Nutrition() {
     }
     
 
-    if(isFetching){
-        return(
+    if (isFetching) {
+        return (
             <View style={styles.loading}>
-                <Text style={styles.loadingText}>Estamos gerando sua dieta!</Text>
-                <Text style={styles.loadingText}>Consultando IA.....</Text>
+                <Text style={styles.loadingText}>🍽️ Preparando sua dieta...</Text>
+                <Text style={styles.loadingText}>A IA está consultando nutricionistas intergalácticos... 🚀</Text>
             </View>
-        )
+        );
     }
-
-    if(error){
-        return(
+    
+    if (error) {
+        return (
             <View style={styles.loading}>
-                <Text style={styles.loadingText}>Falha ao gerar dieta!</Text>
+                <Text style={styles.loadingText}>🚨 Ops! Falha ao gerar sua dieta.</Text>
+                <Text style={styles.loadingText}>Parece que a IA foi almoçar e não voltou! 😅</Text>
                 <Link href="/">
-                    <Text style={styles.loadingText}>Tente novamente</Text>
+                    <Text style={[styles.loadingText, { textDecorationLine: "underline" }]}>
+                        🍏 Tente novamente e vamos ver se ela já voltou!
+                    </Text>
                 </Link>
             </View>
-        )
+        );
     }
-
+    
     return (
         <View style={styles.container}>
             <View style={styles.containerHeader}>
                 <View style={styles.contentHeader}>
-                    <Text style={styles.title}>Minha dieta</Text>
+                    <Text style={styles.title}>🥗 Minha Dieta</Text>
                     <Pressable style={styles.buttonShare} onPress={handleShare}>
-                        <Text style={styles.buttonShareText}>Compartilhar</Text>
+                        <Text style={styles.buttonShareText}>📲 Compartilhar</Text>
                     </Pressable>
                 </View>
             </View>
-            
+    
             <ScrollView style={{ paddingLeft: 16, paddingRight: 16, flex: 1 }}>
                 {data && Object.keys(data).length > 0 ? (
                     <>
-                        <Text style={styles.name}>Eai {data.nome}!</Text>
-                        <Text style={styles.objective}>Segue sua dieta com foco em: {data.objetivo}</Text>
-                        <Text style={styles.objective}>Fiz o cálculo aqui, e você precisa consumir {data.calorias} calorias!</Text>
+                        <Text style={styles.name}>🔥 E aí, {data.nome}!</Text>
+                        <Text style={styles.objective}>
+                            Seu foco é: <Text style={{ fontWeight: "bold" }}>{data.objetivo}</Text>
+                        </Text>
+                        <Text style={styles.objective}>
+                            Fiz os cálculos com uma régua espacial e... você precisa de <Text style={{ fontWeight: "bold" }}>{data.calorias} calorias</Text> por dia!
+                        </Text>
     
-                        <Text style={styles.label}>Refeições:</Text>
+                        <Text style={styles.label}>🍽️ Refeições:</Text>
                         <View style={styles.foods}>
                             {Array.isArray(data.refeicoes) &&
                                 data.refeicoes.map((refeicao) => (
@@ -149,32 +156,32 @@ export default function Nutrition() {
     
                                         <View style={styles.foodContent}>
                                             <Feather name="clock" size={14} color="#000" />
-                                            <Text>Horário: {refeicao.horario}</Text>
+                                            <Text>⏰ Horário: {refeicao.horario}</Text>
                                         </View>
     
-                                        <Text style={styles.foodText}>Alimentos:</Text>
+                                        <Text style={styles.foodText}>🍏 Alimentos:</Text>
                                         {Array.isArray(refeicao.alimentos) &&
                                             refeicao.alimentos.map((alimento, index) => (
-                                                <Text key={`${alimento}-${index}`}>{alimento}</Text>
+                                                <Text key={`${alimento}-${index}`}>✅ {alimento}</Text>
                                             ))}
                                     </View>
                                 ))}
                         </View>
     
                         <View style={styles.suplemments}>
-                            <Text style={styles.foodName}>Dica de suplementos:</Text>
+                            <Text style={styles.foodName}>💊 Dica de suplementos:</Text>
                             {Array.isArray(data.suplementos) &&
                                 data.suplementos.map((item, index) => (
-                                    <Text key={`${item}-${index}`}>{item}</Text>
+                                    <Text key={`${item}-${index}`}>⚡ {item}</Text>
                                 ))}
                         </View>
     
                         <Pressable style={styles.button} onPress={() => router.replace("/")}>
-                            <Text style={styles.buttonText}>Gerar nova dieta</Text>
+                            <Text style={styles.buttonText}>🔄 Gerar nova dieta</Text>
                         </Pressable>
                     </>
                 ) : (
-                    <Text>Carregando...</Text>
+                    <Text>🕵️‍♂️ Carregando...</Text>
                 )}
             </ScrollView>
         </View>
