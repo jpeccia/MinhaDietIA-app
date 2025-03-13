@@ -39,13 +39,13 @@ export default function index() {
         }
 
     const foodRestrictionOptions = [
-        { label: "Sem restrições", value: "sem_restricoes" },
-        { label: "Sem Glúten (Doença celíaca ou intolerância)", value: "sem_gluten" },
-        { label: "Sem Lactose (Intolerância à lactose)", value: "sem_lactose" },
-        { label: "Alergia a Oleaginosas (Nozes, castanhas, amendoim)", value: "alergia_oleaginosas" },
-        { label: "Diabetes (Controle de açúcar e carboidratos)", value: "diabetes" },
-        { label: "Hipertensão (Baixo consumo de sódio)", value: "hipertensao" },
-        { label: "Doença Renal (Controle de proteínas e sódio)", value: "doenca_renal" },
+        { label: "Sem restrições", value: "Sem restrições" },
+        { label: "Sem Glúten (Doença celíaca ou intolerância)", value: "Sem Glúten (Doença celíaca ou intolerância)" },
+        { label: "Sem Lactose (Intolerância à lactose)", value: "Sem Lactose (Intolerância à lactose)" },
+        { label: "Alergia a Oleaginosas (Nozes, castanhas, amendoim)", value: "Alergia a Oleaginosas (Nozes, castanhas, amendoim)" },
+        { label: "Diabetes (Controle de açúcar e carboidratos)", value: "Diabetes (Controle de açúcar e carboidratos)" },
+        { label: "Hipertensão (Baixo consumo de sódio)", value: "Hipertensão (Baixo consumo de sódio)" },
+        { label: "Doença Renal (Controle de proteínas e sódio)", value: "Doença Renal (Controle de proteínas e sódio)" },
     ]
 
 
