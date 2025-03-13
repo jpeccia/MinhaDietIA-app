@@ -54,38 +54,44 @@ export default function index() {
         { label: "Não", value: "Não" },
     ]
 
-  return (
+    return (
         <View style={styles.container}>
-            <Header step={"Passo 3"} title={"Finalizando"}/>
-
+            <Header step={"Passo 3"} title={"Finalizando 🚀"} />
+    
             <ScrollView style={styles.content}>
-                <Text style={styles.label}>Selecione sua restrição alimentar:</Text>
+                <Text style={styles.label}>🔥 Escolha sua restrição alimentar:</Text>
                 <Select
-                  control={control}
-                  name="foodRestrictions"
-                  placeholder='Selecione sua restrição alimentar'
-                  error={errors.foodRestrictions?.message} 
-                  options={foodRestrictionOptions}                
-                  />
-
-                <Text style={styles.label}>Quantidade de refeições ao dia:</Text>
-                <Input name="numberMeals" control={control} placeholder="Ex: 3" error={errors.numberMeals?.message} keyboardType="numeric" />
-
-                <Text style={styles.label}>Selecione se fará o uso de suplementos:</Text>
+                    control={control}
+                    name="foodRestrictions"
+                    placeholder="Sem glúten? Sem lactose? Escolha aqui!"
+                    error={errors.foodRestrictions?.message}
+                    options={foodRestrictionOptions}
+                />
+    
+                <Text style={styles.label}>🍽️ Quantas refeições no dia?</Text>
+                <Input
+                    name="numberMeals"
+                    control={control}
+                    placeholder="Ex: 3 (ou mais se a fome bater!)"
+                    error={errors.numberMeals?.message}
+                    keyboardType="numeric"
+                />
+    
+                <Text style={styles.label}>💊 Vai usar suplementos?</Text>
                 <Select
-                  control={control}
-                  name="useSuplementation"
-                  placeholder='Selecione se fará o uso de suplementos'
-                  error={errors.useSuplementation?.message} 
-                  options={useSuplementationOptions}                
-                  />
-
+                    control={control}
+                    name="useSuplementation"
+                    placeholder="Wheyzinho? Creatina? Escolha aqui!"
+                    error={errors.useSuplementation?.message}
+                    options={useSuplementationOptions}
+                />
+    
                 <Pressable style={styles.button} onPress={handleSubmit(handleCreate)}>
-                         <Text style={styles.buttonText}>Criar dieta</Text>
+                    <Text style={styles.buttonText}>🔥 Bora criar essa dieta!</Text>
                 </Pressable>
             </ScrollView>
         </View>
-  )
+    )
 }
 
 const styles = StyleSheet.create({
