@@ -4,24 +4,24 @@ import { Link } from "expo-router"
 
 export default function Index(){
   return (
-      <View style={styles.container}>
+    <View style={styles.container}>
         <Image 
-        source={require('../assets/images/health-and-wellness-logo-therapeutic-and-holistic-health-center-logo-png_268619-removebg-preview.png')}
-        />
+            source={require('../assets/images/health-and-wellness-logo-therapeutic-and-holistic-health-center-logo-png_268619-removebg-preview.png')}        />
+        
         <Text style={styles.title}>
-          Minha Diet<Text style={{ color: colors.white }}>IA!</Text>
+            Minha Diet<Text style={{ color: colors.white }}>IA! 🤖🥗</Text>
         </Text>
 
         <Text style={styles.text}>
-          A dieta criada do seu jeito com inteligência artificial!
+            A dieta feita para você, do seu jeito, com inteligência artificial! 🚀🔥
         </Text>
 
-      <Link href="/step" asChild>
-      <Pressable style={styles.button}>
-          <Text style={styles.buttonText}>Criar minha dieta</Text>
-        </Pressable>
-      </Link>
-      </View>
+        <Link href="/step" asChild>
+            <Pressable style={styles.button}>
+                <Text style={styles.buttonText}>💪 Criar minha dieta agora!</Text>
+            </Pressable>
+        </Link>
+    </View>
   )
 }
 
