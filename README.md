@@ -1,71 +1,85 @@
-🚀 Sobre o Projeto
+# 🚀 Sobre o Projeto
 
-Minha DietIA é um aplicativo mobile desenvolvido em Expo + React Native, que permite criar dietas personalizadas com base nas preferências e necessidades do usuário, utilizando inteligência artificial. O front-end do projeto foi desenvolvido para proporcionar uma experiência fluida, moderna e intuitiva.
+**Minha DietIA** é um aplicativo mobile desenvolvido em **Expo + React Native**, que permite criar dietas personalizadas com base nas preferências e necessidades do usuário, utilizando **inteligência artificial**. O front-end do projeto foi desenvolvido para proporcionar uma experiência fluida, moderna e intuitiva.
 
-📱 Tecnologias Utilizadas
+---
 
-React Native com Expo ⚛️
+## 📱 Tecnologias Utilizadas
 
-TypeScript para tipagem segura 🛠️
+- ⚛️ **React Native com Expo**
+- 🛠️ **TypeScript** para tipagem segura
+- 🌐 **Zustand** para gerenciamento de estado global
+- 🚀 **TanStack Query (React Query)** para gerenciamento de dados assíncronos
+- 🔍 **Zod** para validação de formulários
+- 🔄 **Axios** para requisições HTTP
+- 📝 **React Hook Form** para facilitar o controle dos inputs
+- 📌 **expo-router** para navegação
 
-Zustand para gerenciamento de estado global 🌐
+---
 
-TanStack Query (React Query) para gerenciamento de dados assíncronos 🚀
+## 🔧 Instalação e Execução
 
-Zod para validação de formulários 🔍
+### 1️⃣ Clone o repositório:
 
-Axios para requisições HTTP 🔄
-
-React Hook Form para facilitar o controle dos inputs 📝
-
-expo-router para navegação 📌
-
-🔧 Instalação e Execução
-
-Clone o repositório:
-
+```sh
 git clone https://github.com/seu-usuario/minha-dietia-front.git
 cd minha-dietia-front
+```
 
-Instale as dependências:
+### 2️⃣ Instale as dependências:
 
+```sh
 npm install
 # ou
 yarn install
+```
 
-Inicie o projeto:
+### 3️⃣ Inicie o projeto:
 
+```sh
 npx expo start
+```
 
-Execute no dispositivo:
+### 4️⃣ Execute no dispositivo:
 
-Escaneie o QR Code no app Expo Go.
+- Escaneie o **QR Code** no app **Expo Go**.
+- Ou rode no **emulador** (iOS/Android).
 
-Ou rode no emulador (iOS/Android).
+---
 
-🔗 Conectando ao Back-end
+## 🔗 Conectando ao Back-end
 
-O back-end da aplicação está separado e foi desenvolvido em Golang, garantindo alta performance e escalabilidade. Para configurar a comunicação entre o front e o back, certifique-se de alterar a variável de ambiente com a URL da API no arquivo correto.
+O **back-end** da aplicação está separado e foi desenvolvido em **Golang**, garantindo alta performance e escalabilidade. Para configurar a comunicação entre o front e o back, certifique-se de alterar a variável de ambiente com a **URL da API** no arquivo correto.
 
 Exemplo:
 
+```ts
 export const API_BASE_URL = "https://sua-api.com";
+```
 
-🛠️ Funcionalidades Implementadas
+---
 
-✅ Cadastro de usuário e preferências 🍽️
-✅ Escolha do objetivo da dieta 🏋️‍♂️
-✅ Seleção de restrições alimentares ❌
-✅ Geração de dieta personalizada com IA 🤖
-✅ Persistência de dados com Zustand 📦
-✅ Validações avançadas com Zod 🛡️
+## 🛠️ Funcionalidades Implementadas
 
-💡 Contribuições
+✅ **Cadastro de usuário e preferências** 🍽️  
+✅ **Escolha do objetivo da dieta** 🏋️‍♂️  
+✅ **Seleção de restrições alimentares** ❌  
+✅ **Geração de dieta personalizada com IA** 🤖  
+✅ **Persistência de dados com Zustand** 📦  
+✅ **Validações avançadas com Zod** 🛡️  
 
-Sinta-se à vontade para contribuir com melhorias e sugestões! Basta abrir uma issue ou enviar um pull request.
+---
 
-📜 Licença
+## 💡 Contribuições
 
-Este projeto está sob a licença MIT. Sinta-se livre para usá-lo e modificá-lo! 😉
+Sinta-se à vontade para contribuir com melhorias e sugestões! Basta abrir uma **issue** ou enviar um **pull request**. 
 
-Desenvolvido com ❤️ por João Otávio Peccia.
+---
+
+## 📜 Licença
+
+Este projeto está sob a licença **MIT**. Sinta-se livre para usá-lo e modificá-lo! 😉
+
+---
+
+Desenvolvido com ❤️ por **João Otávio Peccia**.
