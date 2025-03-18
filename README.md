@@ -1,50 +1,71 @@
-# Welcome to your Expo app 👋
+🚀 Sobre o Projeto
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Minha DietIA é um aplicativo mobile desenvolvido em Expo + React Native, que permite criar dietas personalizadas com base nas preferências e necessidades do usuário, utilizando inteligência artificial. O front-end do projeto foi desenvolvido para proporcionar uma experiência fluida, moderna e intuitiva.
 
-## Get started
+📱 Tecnologias Utilizadas
 
-1. Install dependencies
+React Native com Expo ⚛️
 
-   ```bash
-   npm install
-   ```
+TypeScript para tipagem segura 🛠️
 
-2. Start the app
+Zustand para gerenciamento de estado global 🌐
 
-   ```bash
-    npx expo start
-   ```
+TanStack Query (React Query) para gerenciamento de dados assíncronos 🚀
 
-In the output, you'll find options to open the app in a
+Zod para validação de formulários 🔍
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Axios para requisições HTTP 🔄
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+React Hook Form para facilitar o controle dos inputs 📝
 
-## Get a fresh project
+expo-router para navegação 📌
 
-When you're ready, run:
+🔧 Instalação e Execução
 
-```bash
-npm run reset-project
-```
+Clone o repositório:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+git clone https://github.com/seu-usuario/minha-dietia-front.git
+cd minha-dietia-front
 
-## Learn more
+Instale as dependências:
 
-To learn more about developing your project with Expo, look at the following resources:
+npm install
+# ou
+yarn install
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Inicie o projeto:
 
-## Join the community
+npx expo start
 
-Join our community of developers creating universal apps.
+Execute no dispositivo:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Escaneie o QR Code no app Expo Go.
+
+Ou rode no emulador (iOS/Android).
+
+🔗 Conectando ao Back-end
+
+O back-end da aplicação está separado e foi desenvolvido em Golang, garantindo alta performance e escalabilidade. Para configurar a comunicação entre o front e o back, certifique-se de alterar a variável de ambiente com a URL da API no arquivo correto.
+
+Exemplo:
+
+export const API_BASE_URL = "https://sua-api.com";
+
+🛠️ Funcionalidades Implementadas
+
+✅ Cadastro de usuário e preferências 🍽️
+✅ Escolha do objetivo da dieta 🏋️‍♂️
+✅ Seleção de restrições alimentares ❌
+✅ Geração de dieta personalizada com IA 🤖
+✅ Persistência de dados com Zustand 📦
+✅ Validações avançadas com Zod 🛡️
+
+💡 Contribuições
+
+Sinta-se à vontade para contribuir com melhorias e sugestões! Basta abrir uma issue ou enviar um pull request.
+
+📜 Licença
+
+Este projeto está sob a licença MIT. Sinta-se livre para usá-lo e modificá-lo! 😉
+
+Desenvolvido com ❤️ por João Otávio Peccia.
